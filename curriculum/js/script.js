@@ -1,14 +1,51 @@
 "use strict";   //严格模式
-// 获取div
-const divDom = document.getElementById("table-data-wrap");  // 获取元素
-// 固定语法
-const tableDom = document.createElement('table'); // 创建DOM元素
 
-tableDom.setAttribute('width', '100%');   // 设置属性
-tableDom.setAttribute('border', '0');
-tableDom.setAttribute('cellpadding', '0');
-tableDom.setAttribute('cellspacing', '0');
-tableDom.setAttribute('id', 'table-data-wrap');
+/**
+ * 获取ID的DOM元素
+ * @param {string} id 
+ */
+function $(id){
+    return document.getElementById(id)
+}
+
+/**
+ * 创建元素
+ */
+function createEl(node){
+    return document.createElement(node)
+}
+
+/**
+ * 设置节点属性
+ */
+function setAttr(node, styles){
+    for(let key in styles){
+        node.setAttribute(key, styles[key])
+    }
+}
+
+/**
+ * 获取节点属性
+ */
+function getAttr(node, attr){
+    return node.getAttr(attr)
+}
+
+// 获取 div
+const divDom = $("container-wrap");  // 获取元素
+
+
+// 固定语法
+const tableDom = createEl('table'); // 创建DOM元素
+const styles = {
+    'width': '100%',
+    'border': '0',
+    'cellpadding': '0',
+    'cellspacing': '0',
+    'id': 'table-data-wrap'
+}
+setAttr(tableDom, styles)
+
 
 tableDom.innerHTML = `<thead>
                         <tr>
