@@ -1,13 +1,23 @@
-"use strict";   //严格模式
+"use strict";
+const { error } = require("console");
+
+   //严格模式
 
 /**
  * 获取ID的DOM元素
  * @param {string} id 
  */
-function $(id){
-    return document.getElementById(id)
-}
 
+function $(id){
+    if(typeof id != "string"){
+        throw new Error('参数ID必须是一个字符串')
+    }
+    const dom = document.getElementById(id)
+    if(!dom){
+        throw new Error('DOM元素没找到')
+    }
+    return dom
+}
 /**
  * 创建元素
  */
