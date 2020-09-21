@@ -11,7 +11,7 @@ window.Eyq.setAttr(tableDom, {
     'cellpadding': '0',
     'cellspacing': '0',
     'id': 'table-data-wrap'
-})
+}) 
 
 // array
 const tableTheadData = [
