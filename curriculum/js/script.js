@@ -13,19 +13,6 @@ window.Eyq.setAttr(tableDom, {
     'id': 'table-data-wrap'
 }) 
 
-// array
-const tableTheadData = [
-    { label: "头像" },
-    { label: "姓名" },
-    { label: "性别" },
-    { label: "年龄" },
-    { label: "手机号" },
-    { label: "国籍" },
-    { label: "爱好", width: 200, id: "aaa" },
-    { label: "头衔" },
-    { label: "操作" }
-]
-
 let theadHtml = `<thead><tr>`;
 // es6 forEach
 tableTheadData.forEach((item) => {
@@ -38,6 +25,18 @@ tableTheadData.forEach((item) => {
 })
 
 theadHtml += `</tr></thead>`;
+
+/**
+ * 列表数据
+ */
+let tbodyHtml = `<tbody>`;
+for(let i = 0; i < tableTbodyData.length; i++){
+    
+}
+
+tbodyHtml += `</tbody>`;
+
+
 // 生成表头
-tableDom.innerHTML = theadHtml
+tableDom.innerHTML = theadHtml + tbodyHtml;
 divDom.appendChild(tableDom)
