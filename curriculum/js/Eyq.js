@@ -44,5 +44,5 @@
     }
     window.Eyq.getAttr = getAttr;
      
-})()
+})();
 

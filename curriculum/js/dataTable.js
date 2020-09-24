@@ -41,7 +41,7 @@ const tableTbodyData =
         country: {
             National_flag: 'http://www.web-jshtml.cn/curriculum/javascript/images/china.jpg',
             name: '中国',
-            color: 'red'
+            color: 'white'
         },
         like: [
             { tag: '跑步', color: '#468d9c' },
@@ -74,7 +74,7 @@ const tableTbodyData =
         country: {
             National_flag: 'http://www.web-jshtml.cn/curriculum/javascript/images/china.jpg',
             name: '中国',
-            color: 'red'
+            color: 'white'
         },
         like: [
             { tag: '跑步', color: '#468d9c' },
