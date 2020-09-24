@@ -29,3 +29,18 @@ tbodyHtml += `${createTbodyData()}</tbody>`;
 tableDom.innerHTML = theadHtml + tbodyHtml;
 // 添加到页面
 divDom.appendChild(tableDom)
+
+/**
+ * *****************************************************************
+ */
+const addInfoButton = window.Eyq.getClassName('add-info-button')[0];
+const infoDialog = window.Eyq.$('info-dialog');
+const closeDialog = document.querySelector('.close-dialog');
+
+window.Eyq.addEvent(addInfoButton, 'click', function(){
+    infoDialog.classList.add('dialog-show');
+})
+
+window.Eyq.addEvent(closeDialog, 'click', function(){
+    infoDialog.classList.remove('dialog-show');
+})

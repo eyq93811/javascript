@@ -19,6 +19,15 @@
     window.Eyq.$ = $;
 
     /**
+     * 获取className 对象
+     * @param {string} node 
+     */
+    function getClassName(className){
+        return document.getElementsByClassName(className);
+    }
+    window.Eyq.getClassName = getClassName;
+
+    /**
      * 创建元素
      */
     function createEl(node){
@@ -43,6 +52,14 @@
         return node.getAttr(attr)
     }
     window.Eyq.getAttr = getAttr;
-     
+    
+    /**
+     * addEventListener 方法
+     */
+    function addEvent(domNode, eventType, handlerFunction){
+        domNode.addEventListener(eventType, handlerFunction)
+    }
+    window.Eyq.addEvent = addEvent;
+
 })();
 

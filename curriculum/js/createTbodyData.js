@@ -2,34 +2,6 @@
  * 主体数据
  */
 const bodyDom = document.getElementsByTagName('body')[0];
-
-let timeStart = (new Date()).getTime();
-// 操作DOM元素
-for(let i = 0; i < 10000; i++){
-    const div = document.createElement('div');
-    div.innerHTML = i;
-    bodyDom.appendChild(div)
-    // 不要创建一个对象，就塞一个对象
-}
-let timeEnd = (new Date()).getTime();
-console.log(timeEnd - timeStart);
-
-// 连接字符串 
-// let htmlDom = ``;
-// for(let i = 0; i < 10000; i++){
-//     htmlDom += `<div>${i}</div>`;
-// }
-// bodyDom.innerHTML = bodyDom.innerHTML + htmlDom;
-
-
-
-
-
-
-
-
-
-
 function createTbodyData(){
     let trHtml = ``;
     for(let i = 0; i < tableTbodyData.length; i++){
