@@ -28,6 +28,24 @@
     window.Eyq.getClassName = getClassName;
 
     /**
+     * 获取 标签 对象
+     * @param {string} node 
+     */
+    function getTagName(parentNode, target){
+        return parentNode.getElementsByTagName(target)
+    }
+    window.Eyq.getTagName = getTagName;
+
+    /**
+     * 获取 标签 对象(第一层)
+     * @param {string} node 
+     */
+    function getChildren(parentNode){
+        return parentNode.children;
+    }
+    window.Eyq.getChildren = getChildren;
+
+    /**
      * 创建元素
      */
     function createEl(node){
@@ -60,6 +78,26 @@
         domNode.addEventListener(eventType, handlerFunction)
     }
     window.Eyq.addEvent = addEvent;
+
+    /**
+     * removeEventListener 方法 
+     */
+    function removeEvent(domNode, eventType, handlerFunction){
+        if(window.removeEventListener){
+            domNode.removeEventListener(eventType, handlerFunction);
+        }else{
+            domNode.detachEvent(`on${eventType}`, handlerFunction);
+        }
+    }
+    window.Eyq.removeEvent = removeEvent;
+
+    /**
+     * 添加子节点到父级末尾
+     */
+    function addChild(parentNode, node){
+        parentNode.appendChild(node);   // 对象的末尾添加
+    }
+    window.Eyq.addChild = addChild;
 
 })();
 
