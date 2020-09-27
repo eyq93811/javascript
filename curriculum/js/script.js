@@ -1,20 +1,4 @@
 "use strict";  //严格模式
-// 获取 div
-const divDom = window.Eyq.$("container-wrap");  // 获取元素
-// 固定语法
-const tableDom = window.Eyq.createEl('table'); // 创建DOM元素
-// 获取添加信息按钮对象
-const addInfoButton = window.Eyq.getClassName('add-info-button')[0];
-// 获取form 弹窗对象
-const infoDialog = window.Eyq.$('info-dialog');
-// 获取form 弹窗关闭按钮对象
-const closeDialog = document.querySelector('.close-dialog');
-// 获取头像区域
-const faceView = window.Eyq.getClassName('face-view')[0];
-// 获取头像列表区域
-const faceViewList = window.Eyq.getClassName('face-view-list')[0];
-
-
 window.Eyq.setAttr(tableDom, {
     'width': '100%',
     'border': '0',
@@ -59,12 +43,14 @@ window.Eyq.addEvent(closeDialog, 'click', function(){
  * ****** 头像事件处理 ***********************************************************
  */
 window.Eyq.addEvent(faceView, 'click', function(){
-    handlerFaceList()
+    // 请求接口
+    handlerFaceList();
 })
 
 window.Eyq.addEvent(faceViewList, 'click', function(e){
+    const ev = e || window.event;
     // 获取标签
-    let nodeName = e.target.nodeName.toLowerCase();
+    let nodeName = ev.target.nodeName.toLowerCase();
     // 获取img对象
     const getImg = window.Eyq.getTagName(faceView, 'img')[0];
     // 创建img对象
@@ -80,27 +66,40 @@ window.Eyq.addEvent(faceViewList, 'click', function(e){
     }
     // 如果点击的是img
     if(nodeName === 'img'){ 
-        getSrc = e.target.src;
+        getSrc = ev.target.src;
     }
-    // 头像存在，则修改头像的sec
-    if(getImg){
-        getImg.src = getSrc;
-    }else{
-        // img 写入src img标签不存在，直接创建一个img标签
-        createImg.src = getSrc;
-        window.Eyq.addChild(faceView, createImg);
-    }
+    // 更新头像
+    // faceUpdate(getImg, createImg, getSrc, 'add');
+    // es5
+    // faceUpdate({
+    //     type: "add",
+    //     gImg: getImg,
+    //     cImg: createImg,
+    //     src: getSrc
+    // })
+    // es6
+    faceUpdate({  // 对象的 key 和 value 是相同的情况下， 用一个参数就可以
+        type: "add",
+        getImg, 
+        createImg, 
+        getSrc
+    })
 })
 
-function handlerFaceListCallback(data){
-    // 获得数据
-    const requestData = data.data;
-    let liHtml = ``;
-    for(let key of requestData){
-        liHtml += `<li><img src="${key}" alt=""></li>`
-    }
-    faceViewList.innerHTML = liHtml;
-}
+window.Eyq.addEvent(faceDelButton, 'click', function(e){ 
+    const ev = e || window.event;
+    // 获取img对象
+    const getImg = window.Eyq.getTagName(faceView, 'img')[0];
+    // 更新头像
+    faceUpdate({
+        type: "del",
+        getImg
+    });
+    // 阻止事件冒泡
+    ev.stopPropagation && (ev.stopPropagation() || (ev.cancelBubble = true));
+})
+
+
 
 
 

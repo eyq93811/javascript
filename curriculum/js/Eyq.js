@@ -74,8 +74,12 @@
     /**
      * addEventListener 方法
      */
-    function addEvent(domNode, eventType, handlerFunction){
-        domNode.addEventListener(eventType, handlerFunction)
+    function addEvent(domNode, eventType, handlerFunction, cap){  // 第 3 个 参数为 true 或 false
+        if(window.addEventListener){
+            domNode.addEventListener(eventType, handlerFunction, cap);
+        }else{
+            domNode.attchEvent(`on${eventType}`, handlerFunction, cap);
+        }
     }
     window.Eyq.addEvent = addEvent;
 
