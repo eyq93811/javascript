@@ -57,26 +57,24 @@ window.Eyq.addEvent(faceViewList, 'click', function(e){
     const createImg = window.Eyq.createEl('img');
     // 点击获取src
     let getSrc = ``;
+    // 清除头像高光
+    if(faceSave){ faceSave.classList.remove("active"); }   // 清除上一次的头像样式
     // 更新src
     if(nodeName === 'li'){
         // 获得img
         const img = window.Eyq.getChildren(e.target)[0];
         // 获得img的src
         getSrc = img.src;
+        // 存储头像 li 标签
+        faceSave = ev.target;
     }
     // 如果点击的是img
     if(nodeName === 'img'){ 
         getSrc = ev.target.src;
+        faceSave = ev.target.parentNode;  // parentNode 父节点
     }
-    // 更新头像
-    // faceUpdate(getImg, createImg, getSrc, 'add');
-    // es5
-    // faceUpdate({
-    //     type: "add",
-    //     gImg: getImg,
-    //     cImg: createImg,
-    //     src: getSrc
-    // })
+    // 头像添加高光效果
+    faceSave.classList.add("active");
     // es6
     faceUpdate({  // 对象的 key 和 value 是相同的情况下， 用一个参数就可以
         type: "add",
@@ -96,8 +94,22 @@ window.Eyq.addEvent(faceDelButton, 'click', function(e){
         getImg
     });
     // 阻止事件冒泡
-    ev.stopPropagation && (ev.stopPropagation() || (ev.cancelBubble = true));
+    if(ev.stopPropagation){
+        ev.stopPropagation();
+    }else{
+        ev.cancelBubble = true; 
+    }
 })
+
+/*************input DOM 对象 **************/
+inputUsername.onblur = function(){    // 谁绑定方法， this就指向谁
+    let value = this.value;
+    if(!value){
+        window.UI.$message({
+            message: "姓名不能为空"
+        });
+    }
+}
 
 
 

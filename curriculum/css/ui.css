@@ -1,0 +1,20 @@
+#alert-ui{
+    position: fixed;
+    left: 50%;
+    top: -300px;
+    width: 350px;
+    padding: 20px;
+    margin-left: -195px;
+    background-color: #edf2fc;
+    color: #000;
+    border: 1px solid #ebeef5;
+    border-radius: 5px;
+    -webkit-transition: all .5s ease 0s;
+    -moz-transition: all .5s ease 0s;
+    -ms-transition: all .5s ease 0s;
+    -o-transition: all .5s ease 0s;
+    transition: all .5s ease 0s;
+}
+#alert-ui.show{
+    top: 30px;
+}

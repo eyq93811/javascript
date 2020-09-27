@@ -15,3 +15,8 @@ const faceView = window.Eyq.getClassName('face-view')[0];
 const faceViewList = window.Eyq.getClassName('face-view-list')[0];
 // 获取删除头像按钮
 const faceDelButton = window.Eyq.getTagName(faceView, 'a')[0];
+// 头像存储
+let faceSave = null;
+
+/*************input DOM 对象 **************/
+const inputUsername = window.Eyq.$('usernameInput');

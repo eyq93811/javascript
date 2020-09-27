@@ -48,8 +48,13 @@
     /**
      * 创建元素
      */
-    function createEl(node){
-        return document.createElement(node)
+    function createEl(node, attr){
+        const dom = document.createElement(node);
+        // 判断属性是否存在
+        if(attr){
+            Eyq.setAttr(dom, attr);
+        }
+        return dom;
     }
     window.Eyq.createEl = createEl;
 
