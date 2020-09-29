@@ -106,7 +106,9 @@ inputUsername.onblur = function(){    // 谁绑定方法， this就指向谁
     let value = this.value;
     if(!value){
         window.UI.$message({
-            message: "姓名不能为空"
+            message: "姓名不能为空",
+            type: "primary",
+            html: true
         });
     }
 }
